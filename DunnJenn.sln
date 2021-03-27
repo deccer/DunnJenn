@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9938CA3E-ABAC-4AF4-992A-7425FA482D40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4683CF09-96BC-477F-8A88-882ED91F3CEA}"
+ProjectSection(SolutionItems) = preProject
+	LICENSE = LICENSE
+	README.md = README.md
+	.gitignore = .gitignore
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DunnJenn", "src\DunnJenn\DunnJenn.csproj", "{A38E365E-6F18-419E-82B1-A1ED29448DAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{1F7998E2-1158-4E2C-B18F-5EB774C85EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA.Core", "external\FNA\FNA.Core.csproj", "{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteFontPlus.FNA.Core", "external\SpriteFontPlus\src\SpriteFontPlus.FNA.Core.csproj", "{A57207D2-969E-44DA-A62C-C513D0B6AA63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A38E365E-6F18-419E-82B1-A1ED29448DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38E365E-6F18-419E-82B1-A1ED29448DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38E365E-6F18-419E-82B1-A1ED29448DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38E365E-6F18-419E-82B1-A1ED29448DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47}.Debug|Any CPU.Build.0 = Debug|x64
+		{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47}.Release|Any CPU.ActiveCfg = Release|x64
+		{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47}.Release|Any CPU.Build.0 = Release|x64
+		{A57207D2-969E-44DA-A62C-C513D0B6AA63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57207D2-969E-44DA-A62C-C513D0B6AA63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57207D2-969E-44DA-A62C-C513D0B6AA63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57207D2-969E-44DA-A62C-C513D0B6AA63}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A38E365E-6F18-419E-82B1-A1ED29448DAF} = {9938CA3E-ABAC-4AF4-992A-7425FA482D40}
+		{C0EE2E95-B35D-4B7D-9CEF-76D61755AC47} = {1F7998E2-1158-4E2C-B18F-5EB774C85EB7}
+		{A57207D2-969E-44DA-A62C-C513D0B6AA63} = {1F7998E2-1158-4E2C-B18F-5EB774C85EB7}
+	EndGlobalSection
+EndGlobal
