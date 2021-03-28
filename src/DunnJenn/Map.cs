@@ -24,7 +24,6 @@ namespace DunnJenn
 
         public Chunk GetChunk(Point position)
         {
-            //var chunkPosition = new Point(position.X / Chunk.ChunkSize, position.Y / Chunk.ChunkSize);
             return _chunkProvider.GetChunk(Id, position);
         }
     }

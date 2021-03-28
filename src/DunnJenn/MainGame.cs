@@ -21,7 +21,6 @@ namespace DunnJenn
         private bool _isWindowFocused;
         private SpriteBatch _spriteBatch;
         private SpriteFont _spriteFont;
-        private Camera2D _camera2d;
         private Camera _camera;
 
         private Texture2D _textureAtlas;
@@ -37,7 +36,7 @@ namespace DunnJenn
 
         private ImGuiRenderer _imGuiRenderer;
         private bool _isUiVisible = true;
-        
+
         public MainGame(
             ILogger logger,
             IMapProvider mapProvider,
@@ -93,7 +92,7 @@ namespace DunnJenn
             }
 
             GraphicsDevice.Clear(Color.Black);
-            
+
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap,
                 DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, _camera.Transform);
             foreach (var chunk in _visibleChunks)
@@ -141,17 +140,17 @@ namespace DunnJenn
             _spriteBatch.DrawString(_spriteFont, _heroText, new Vector2(8, 8), Color.LawnGreen);
             _spriteBatch.End();
 */
-            
+
             if (_isUiVisible)
             {
                 DrawUserInterface(gameTime);
             }
-            
+
             base.Draw(gameTime);
         }
 
         private void DrawUserInterface(GameTime gameTime)
-        { 
+        {
             _imGuiRenderer.BeginLayout(gameTime);
             if (ImGui.BeginMainMenuBar())
             {
@@ -166,7 +165,7 @@ namespace DunnJenn
 
                         ImGui.EndMenu();
                     }
-                    
+
                     ImGui.EndMenuBar();
                 }
                 ImGui.EndMainMenuBar();
@@ -185,21 +184,21 @@ namespace DunnJenn
                     _noiseGenerator.CellularDistanceFunction = FastNoiseLite.CellularDistanceFunction.Euclidean;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("CDF-EuclidianSq"))
                 {
                     _noiseGenerator.CellularDistanceFunction = FastNoiseLite.CellularDistanceFunction.EuclideanSq;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("CDF-Hybrid"))
                 {
                     _noiseGenerator.CellularDistanceFunction = FastNoiseLite.CellularDistanceFunction.Hybrid;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("CDF-Manhattan"))
                 {
@@ -212,7 +211,7 @@ namespace DunnJenn
                     _noiseGenerator.FractalType = FastNoiseLite.FractalType.None;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("FT-Ridged"))
                 {
@@ -226,7 +225,7 @@ namespace DunnJenn
                     _noiseGenerator.FractalType = FastNoiseLite.FractalType.FBm;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("FT-PingPong"))
                 {
@@ -253,28 +252,28 @@ namespace DunnJenn
                     _noiseGenerator.NoiseType = FastNoiseLite.NoiseType.Cellular;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("NT-Perlin"))
                 {
                     _noiseGenerator.NoiseType = FastNoiseLite.NoiseType.Perlin;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("NT-Value"))
                 {
                     _noiseGenerator.NoiseType = FastNoiseLite.NoiseType.Value;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("NT-OpenSimplex"))
                 {
                     _noiseGenerator.NoiseType = FastNoiseLite.NoiseType.OpenSimplex2;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 ImGui.SameLine();
                 if (ImGui.Button("NT-ValueCubic"))
                 {
@@ -288,7 +287,7 @@ namespace DunnJenn
                     _noiseGenerator.NoiseType = FastNoiseLite.NoiseType.OpenSimplex2S;
                     _chunkProvider.Reset(ResetOptions.ResetCache | ResetOptions.ResetFileSystem);
                 }
-                
+
                 if (ImGui.SliderFloat("Frequency", ref frequency, 0.001f, 1.0f))
                 {
                     _noiseGenerator.Frequency = frequency;
@@ -324,13 +323,13 @@ namespace DunnJenn
                 if (ImGui.InputFloat2("Chunk Position", ref camChunk))
                 {
                 }
-                
+
                 ImGui.End();
             }
-            
+
             _imGuiRenderer.EndLayout();
         }
-        
+
         private Rectangle GetRectangleForTileId(int tileId)
         {
             var tilesPerRow = _textureAtlas.Width / 32;
@@ -394,7 +393,7 @@ namespace DunnJenn
             var visibleChunkAreaTop = visibleScreenArea.Top / Chunk.ChunkSize / Tile.TileSize - 1;
             var visibleChunkAreaRight = visibleChunkAreaLeft + visibleScreenArea.Width / Chunk.ChunkSize / Tile.TileSize + 1;
             var visibleChunkAreaBottom = visibleChunkAreaTop + visibleScreenArea.Height / Chunk.ChunkSize / Tile.TileSize + 1;
-            
+
             _visibleChunks.Clear();
             for (var y = visibleChunkAreaTop; y <= visibleChunkAreaBottom; y++)
             {
