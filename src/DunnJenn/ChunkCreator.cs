@@ -15,6 +15,8 @@ namespace DunnJenn
         private Tile[] _coastTiles;
         private Tile[] _sandTiles;
         private Tile[] _grassTiles;
+        private Tile[] _forestTiles;
+        private Tile[] _mountainTiles;
 
         public ChunkCreator(
             ILogger logger,
@@ -60,6 +62,20 @@ namespace DunnJenn
                 new Tile { Id = 258 },
                 new Tile { Id = 259 }
             };
+            _forestTiles = new[]
+            {
+                new Tile { Id = 320 },
+                new Tile { Id = 321 },
+                new Tile { Id = 322 },
+                new Tile { Id = 323 }
+            };
+            _mountainTiles = new[]
+            {
+                new Tile { Id = 384 },
+                new Tile { Id = 385 },
+                new Tile { Id = 386 },
+                new Tile { Id = 387 }
+            };
         }
 
         public Chunk CreateChunk(Guid planetId, Point position)
@@ -91,6 +107,8 @@ namespace DunnJenn
                 >= 0.22f and < 0.25f => RandomCoastWaterTile(),
                 >= 0.25f and < 0.3f => RandomSandTile(),
                 >= 0.3f and < 0.7f => RandomGrassTile(),
+                >= 0.7f and < 0.81f => RandomForestTile(),
+                >= 0.81f and <= 1.0f => RandomMountainTile(),
                 _ => new Tile {Id = 6}
             };
         }
@@ -118,6 +136,16 @@ namespace DunnJenn
         private Tile RandomGrassTile()
         {
             return _grassTiles[_random.Next(_grassTiles.Length)];
+        }
+
+        private Tile RandomForestTile()
+        {
+            return _forestTiles[_random.Next(_forestTiles.Length)];
+        }
+
+        private Tile RandomMountainTile()
+        {
+            return _mountainTiles[_random.Next(_mountainTiles.Length)];
         }
     }
 }
