@@ -32,7 +32,7 @@ namespace DunnJenn
             configuration.GetSection(nameof(ChunkCreator)).Bind(chunkCreatorOptions);
             var chunkProviderOptions = new ChunkProviderOptions();
             configuration.GetSection(nameof(ChunkProvider)).Bind(chunkProviderOptions);
-            
+
             var services = new ServiceCollection();
             services.AddSingleton(Log.Logger);
             services.AddSingleton(chunkCreatorOptions);
@@ -41,10 +41,10 @@ namespace DunnJenn
             services.AddSingleton<IChunkLoader, ChunkLoader>();
             services.AddSingleton<IChunkSaver, ChunkSaver>();
             services.AddSingleton<IChunkProvider, ChunkProvider>();
-            services.AddSingleton<INoiseGenerator, FastNoiseNoiseGenerator>();
+            services.AddSingleton<INoiseGenerator, LibNoiseNoiseGenerator>();
             services.AddSingleton<IMapProvider, MapProvider>();
             services.AddSingleton<MainGame>();
-            
+
             return services.BuildServiceProvider();
         }
     }
