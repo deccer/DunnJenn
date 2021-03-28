@@ -139,7 +139,7 @@ namespace DunnJenn
                     var tx = chunkPosition.X * Chunk.ChunkSize + x;
                     var ty = chunkPosition.Y * Chunk.ChunkSize + y;
 
-                    var noiseValue = (float)_noise.GetNoise(tx / (float)Chunk.ChunkSize, ty / (float)Chunk.ChunkSize);
+                    var noiseValue = (float)_noise.GetNoise(tx * 100f, ty * 100f);
                     if (noiseValue > noiseData.Max)
                     {
                         noiseData.Max = noiseValue;
